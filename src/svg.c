@@ -22,9 +22,6 @@
 #include "newick-tools.h"
 
 
-// #define SVGFNT Arial
-#define SVGFNT Monospace
-
 double scaler = 0;
 long stroke_width = 3;
 
@@ -193,7 +190,7 @@ static void svg_utree_plot(utree_t * node)
     if (!node->next)
     {
       fprintf(svg_fp, "<text x=\"%f\" y=\"%f\" "
-                      "font-size=\"%ld\" font-family=\"SVGFNT;\">%s</text>\n",
+                      "font-size=\"%ld\" font-family=\"Monospace;\">%s</text>\n",
               x+5,
               y+opt_svg_fontsize/3.0,
               opt_svg_fontsize,
@@ -272,7 +269,7 @@ static void svg_rtree_plot(rtree_t * node)
     if (!node->left)
     {
       fprintf(svg_fp, "<text x=\"%f\" y=\"%f\" "
-                      "font-size=\"%ld\" font-family=\"SVGFNT;\">%s</text>\n",
+                      "font-size=\"%ld\" font-family=\"Monospace;\">%s</text>\n",
               x+5,
               y+opt_svg_fontsize/3.0,
               opt_svg_fontsize,
@@ -437,7 +434,7 @@ void svg_utree_init(utree_t * root, int tip_count)
              3);
 
     fprintf(svg_fp, "<text x=\"%f\" y=\"%f\" font-size=\"%ld\" "
-            "font-family=\"SVGFNT;\">%.*f</text>\n",
+            "font-family=\"Monospace;\">%.*f</text>\n",
             (canvas_width - max_font_len)*opt_svg_legend_ratio + opt_svg_marginleft + 5,
             20-opt_svg_fontsize/3.0,
             (long)opt_svg_fontsize, opt_precision, max_tree_len * opt_svg_legend_ratio);
@@ -495,7 +492,7 @@ void svg_rtree_init(rtree_t * root)
              3);
 
     fprintf(svg_fp, "<text x=\"%f\" y=\"%f\" font-size=\"%ld\" "
-            "font-family=\"SVGFNT;\">%.*f</text>\n",
+            "font-family=\"Monospace;\">%.*f</text>\n",
             (canvas_width - max_font_len)*opt_svg_legend_ratio + opt_svg_marginleft + 5,
             20-opt_svg_fontsize/3.0,
             (long)opt_svg_fontsize, opt_precision, max_tree_len * opt_svg_legend_ratio);
