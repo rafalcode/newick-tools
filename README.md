@@ -5,6 +5,8 @@
 
 ## Introduction
 
+[fork primarily to manipulate fonts in svg.c]
+
 The aim of this project is to implement a proper, multifunctional newick
 manipulation toolkit called `newick-tools`. The toolkit should:
 
@@ -27,9 +29,7 @@ manipulation toolkit called `newick-tools`. The toolkit should:
 
 Currently, `newick-tools` requires that [GNU Bison](http://www.gnu.org/software/bison/)
 and [Flex](http://flex.sourceforge.net/) are installed on the target system. On
-a Debian-based Linux system, the two packages can be installed using the command
-
-`apt-get install flex bison`
+a Debian-based Linux systems, ... well you should know.
 
 `newick-tools` also requires that a GNU system is available as it uses several
 functions (e.g. `asprintf`) which are not present in the POSIX standard.
