@@ -68,10 +68,7 @@ double rtree_longest_path(rtree_t * root)
   return maxlength;
 }
 
-static void print_tree_recurse(FILE * stream,
-                               rtree_t * tree, 
-                               int indend_level, 
-                               int * active_node_order)
+static void print_tree_recurse(FILE * stream, rtree_t * tree, int indend_level, int * active_node_order)
 {
   int i,j;
 
@@ -484,23 +481,21 @@ rtree_t ** rtree_tipstring_nodes(rtree_t * root, char * tipstring, unsigned int 
   char * taxon;
   unsigned int taxon_len;
 
-  ENTRY * found = NULL;
+  ENTRY *found = NULL;
 
   for (i = 0; i < strlen(tipstring); ++i)
     if (tipstring[i] == ',')
       commas_count++;
   
-  rtree_t ** node_list = (rtree_t **)xmalloc(root->leaves * sizeof(rtree_t *));
+  rtree_t **node_list = (rtree_t **)xmalloc(root->leaves * sizeof(rtree_t *));
   rtree_query_tipnodes(root, node_list);
 
-  rtree_t ** out_node_list = (rtree_t **)xmalloc((commas_count+1) *
-                                                   sizeof(rtree_t *));
+  rtree_t ** out_node_list = (rtree_t **)xmalloc((commas_count+1) * sizeof(rtree_t *));
 
   /* create a hashtable of tip labels */
   hcreate(2 * root->leaves);
 
-  for (i = 0; i < root->leaves; ++i)
-  {
+  for (i = 0; i < root->leaves; ++i) {
     ENTRY entry;
     entry.key  = node_list[i]->label;
     entry.data = node_list[i];
@@ -550,9 +545,7 @@ rtree_t ** rtree_tipstring_nodes(rtree_t * root, char * tipstring, unsigned int 
   return out_node_list;
 }
 
-rtree_t ** rtree_tiplist_complement(rtree_t * root,
-                                    rtree_t ** tiplist,
-                                    unsigned int tiplist_count)
+rtree_t ** rtree_tiplist_complement(rtree_t * root, rtree_t ** tiplist, unsigned int tiplist_count)
 {
   unsigned int i;
   unsigned int k;
@@ -560,8 +553,7 @@ rtree_t ** rtree_tiplist_complement(rtree_t * root,
 
   hcreate(2 * tiplist_count);
 
-  for (i = 0; i < tiplist_count; ++i)
-  {
+  for (i = 0; i < tiplist_count; ++i) {
     ENTRY entry;
     entry.key  = tiplist[i]->label;
     entry.data = tiplist[i];
@@ -574,8 +566,7 @@ rtree_t ** rtree_tiplist_complement(rtree_t * root,
   rtree_t ** out_node_list = (rtree_t **)xmalloc((root->leaves - tiplist_count)*
                                                  sizeof(rtree_t *));
   
-  for (k = 0, i = 0; i < root->leaves; ++i)
-  {
+  for (k = 0, i = 0; i < root->leaves; ++i) {
     ENTRY query;
     query.key = node_list[i]->label;
     found = NULL;

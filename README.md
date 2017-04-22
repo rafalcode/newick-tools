@@ -5,7 +5,7 @@
 
 ## Introduction
 
-[fork primarily to manipulate fonts in svg.c]
+[RF fork primarily to manipulate fonts in svg.c]
 
 The aim of this project is to implement a proper, multifunctional newick
 manipulation toolkit called `newick-tools`. The toolkit should:
@@ -116,11 +116,24 @@ The code is currently licensed under the [GNU Affero General Public License vers
 **prune.c**        | Methods for pruning taxa and inducing subtrees.
 **info.c**         | Functions for showing various tree-related  information.
 
+## Examples:
+Say you have two leaf-nodes labelled 371596Q and 337364Q, you can prune them as follows:
+newick-tools --induce_subtree "371596Q,337364Q" --tree_file RAxML_bestTree.tre --output_file o.t
+This example serves to clarify that the TAXA element referred to in the docs are comma-separated leaf-labels.
+
+## Coding style
+* High number of globals.
+* The options are exclusively long.
+* the --three-word-option standard is waived. In its stead, the underscore is used as the token separator
+* Some impoliteness "go fix your tree" no doubt due to non-maternal-english of coders, not intentional one expects.
+* However, program behaves well according to valgrind.
+
 ## Bugs
 
 The source code in the master branch is thoroughly tested before commits.
 However, mistakes may happen. All bug reports are highly appreciated.
-
+- RF: segfaults with induce_subtree. This function seems to be partially built, explains version number (0.0.1).
+    This is probably due to your giving it an unrooted tree. The induce_subtree seems to need a root, I think.
 
 ## The team
 
